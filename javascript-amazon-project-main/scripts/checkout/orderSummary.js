@@ -8,7 +8,6 @@ import { renderCheckoutHeader } from "./checkoutHeader.js";
 
 const today = dayjs();
 const deliveryDAte = today.add(7, 'days');
-console.log(deliveryDAte.format('dddd, MMMM D'));
 
 export function renderOrderSummary () {
 
