@@ -1,6 +1,7 @@
 import { cart, addToCart, updateCartQuantity } from "../data/cart.js";
 import { products } from "../data/products.js";
 // import '../data/car.js';
+import '../data/backend-practice.js';
 
 let productHTML = '';
 
