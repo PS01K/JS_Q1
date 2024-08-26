@@ -2,6 +2,7 @@ import { orders } from "../data/orders.js";
 import { formatCurrency } from "./utils/money.js";
 import { getProduct, loadProducts } from "../data/products.js";
 import dayjs from "https://unpkg.com/dayjs@1.11.10/esm/index.js";
+import { addToCart2 } from "../data/cart.js"
 
 console.log(orders);
 loadProducts(renderOrders);
@@ -38,6 +39,22 @@ function renderOrders () {
   });
 
   document.querySelector('.js-orders-grid').innerHTML += orderHTML;
+
+  document.querySelectorAll('.buy-again-button')
+    .forEach(button => {
+      button.addEventListener('click', () => {
+        const {productId} = button.dataset;
+        addToCart2(productId);
+        
+        button.innerHTML = 'Added';
+        setTimeout(() => {
+          button.innerHTML = `
+          <img class="buy-again-icon" src="images/icons/buy-again.png">
+          <span class="buy-again-message">Buy it again</span>
+          `;
+        }, 1000);
+      });
+    });
   
   function loadProductsHTMl (order) {
     let productsHTML = '';
@@ -59,7 +76,7 @@ function renderOrders () {
         <div class="product-quantity">
           Quantity: ${product.quantity}
         </div>
-        <button class="buy-again-button button-primary">
+        <button class="buy-again-button button-primary" data-product-id="${product.productId}">
           <img class="buy-again-icon" src="images/icons/buy-again.png">
           <span class="buy-again-message">Buy it again</span>
         </button>
