@@ -2,8 +2,8 @@ import { loadProducts } from "../data/products.js";
 import { orders } from "../data/orders.js";
 import dayjs from "https://unpkg.com/dayjs@1.11.10/esm/index.js";
 import { getProduct } from "../data/products.js";
-
-
+import { updateCartQuantity } from "../data/cart.js";
+ 
 loadProducts(renderTracking);
 
 function renderTracking() {
@@ -64,4 +64,5 @@ function renderTracking() {
     `;  
 
   document.querySelector('.js-order-tracking').innerHTML = trackingHTML;
+  document.querySelector('.cart-quantity').innerHTML = updateCartQuantity();
 }

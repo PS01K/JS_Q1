@@ -1,10 +1,15 @@
 import { orders, getDate } from "../data/orders.js";
 import { formatCurrency } from "./utils/money.js";
 import { getProduct, loadProducts } from "../data/products.js";
-import { addToCart2 } from "../data/cart.js"
+import { addToCart2, updateCartQuantity } from "../data/cart.js"
 
 console.log(orders);
-loadProducts(renderOrders);
+
+loadPage();
+
+function loadPage() {
+  loadProducts(renderOrders);
+};
 
 function renderOrders () {
   let orderHTML = '';
@@ -37,6 +42,7 @@ function renderOrders () {
     `;
   });
 
+  document.querySelector('.js-cart-quantity').innerHTML = updateCartQuantity();
   document.querySelector('.js-orders-grid').innerHTML += orderHTML;
 
   document.querySelectorAll('.buy-again-button')
@@ -52,6 +58,8 @@ function renderOrders () {
           <span class="buy-again-message">Buy it again</span>
           `;
         }, 1000);
+
+        document.querySelector('.js-cart-quantity').innerHTML = updateCartQuantity();
       });
     });
   
