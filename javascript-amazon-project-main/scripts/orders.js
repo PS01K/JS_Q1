@@ -1,7 +1,6 @@
-import { orders } from "../data/orders.js";
+import { orders, getDate } from "../data/orders.js";
 import { formatCurrency } from "./utils/money.js";
 import { getProduct, loadProducts } from "../data/products.js";
-import dayjs from "https://unpkg.com/dayjs@1.11.10/esm/index.js";
 import { addToCart2 } from "../data/cart.js"
 
 console.log(orders);
@@ -92,9 +91,5 @@ function renderOrders () {
       `;
     });
     return productsHTML;
-  }
-
-  function getDate(date) {
-    return dayjs(date).format('MMMM D')
   }
 }

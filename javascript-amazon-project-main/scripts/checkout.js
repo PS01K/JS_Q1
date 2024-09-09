@@ -5,7 +5,7 @@ import { loadProductsFetch } from "../data/products.js";
 import { loadCartFetch } from "../data/cart.js";
 // import '../data/cart-class.js';
 
-async function loadPage() {  
+export async function loadPage() {  
   try {
     // throw 'error1';
 

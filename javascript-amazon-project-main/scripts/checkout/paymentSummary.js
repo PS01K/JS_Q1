@@ -3,6 +3,7 @@ import { getProduct } from "../../data/products.js";
 import {  getDeliveryOption } from "../../data/deliveryOptions.js";
 import { formatCurrency } from "../utils/money.js"; 
 import { addOrder } from "../../data/orders.js";
+import { loadPage } from "../checkout.js";
 
 export function renderPaymentSummary () {
   let productPriceCents = 0;
@@ -90,6 +91,9 @@ export function renderPaymentSummary () {
       } catch (error) {
         console.log('Unexpected error. Try again later.');
       };
+      
+      cart.length = 0;
+      loadPage();
 
       window.location.href = 'orders.html';
     });
