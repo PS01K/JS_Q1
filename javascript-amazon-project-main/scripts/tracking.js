@@ -59,7 +59,7 @@ function renderTracking() {
     </div>
 
     <div class="progress-bar-container">
-      <div class="progress-bar"></div>
+      <div class="progress-bar js-progress-bar"></div>
     </div>
     `;  
 
