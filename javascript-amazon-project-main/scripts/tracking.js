@@ -12,7 +12,7 @@ function renderTracking() {
   const productId = url.searchParams.get('productId');
   let order;
   let product;
-  
+
   orders.forEach(element => {
     if (element.id === orderId) {
       order = element;
@@ -26,7 +26,12 @@ function renderTracking() {
   });
   
   const matchingProduct = getProduct(product.productId);
-  
+
+  const currentDate = dayjs();
+  const orderDate = dayjs(order.orderTime);
+  const deliveryDate = dayjs(product.estimatedDeliveryTime);
+  const percent = ( (currentDate - orderDate) / (deliveryDate - orderDate) ) * 100;
+    
   let trackingHTML = ` 
     <a class="back-to-orders-link link-primary" href="orders.html">
       View all orders
@@ -59,7 +64,7 @@ function renderTracking() {
     </div>
 
     <div class="progress-bar-container">
-      <div class="progress-bar js-progress-bar"></div>
+      <div class="progress-bar js-progress-bar" style="width: ${percent}%"></div>
     </div>
     `;  
 
