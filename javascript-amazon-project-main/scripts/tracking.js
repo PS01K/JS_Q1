@@ -52,13 +52,19 @@ function renderTracking() {
     <img class="product-image" src="${matchingProduct.image}">
 
     <div class="progress-labels-container">
-      <div class="progress-label">
+      <div class="progress-label ${
+        percent < 50 ? 'current-status' : ''
+      }">
         Preparing
       </div>
-      <div class="progress-label current-status">
+      <div class="progress-label ${
+        (percent >= 50 && percent < 100) ? 'current-status' : ''
+      }">
         Shipped
       </div>
-      <div class="progress-label">
+      <div class="progress-label ${
+        percent >= 100 ? "current-status" : ''
+      }">
         Delivered
       </div>
     </div>
